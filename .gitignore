@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# 学習済みモデル・一時ファイル
+saved_model/
+saved_attention_data/
+saved_attention_heatmaps/
+saved_tokenizer_data/
+
+wandb/
