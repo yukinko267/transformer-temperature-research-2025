@@ -1,26 +1,45 @@
-Temperature-Scaled Transformer Attention
+# Temperature-Scaled Attention Transformer
 
-本研究は、TransformerのAttention内Softmaxに温度パラメータを導入し、その挙動と性能変化を分析することを目的とする。
-特に、Attention分布の鋭さと翻訳性能の関係に着目する。
+## 概要
 
-Overview
+本研究は、TransformerにおけるAttention機構のSoftmaxに温度パラメータ（Temperature）を導入し学習時に冷却することで、
+Attention分布の変化とモデル性能への影響を分析する研究実装です。
 
-Multi-Head Attention内のSoftmaxに温度Tを導入
+Softmaxの温度を制御することで、Attentionの集中度（鋭さ）を調整可能にし、
+その挙動をヘッドごとの正規化エントロピーで可視化・定量評価します。
 
-学習時および評価時で温度を制御可能
+---
 
-Attentionの可視化およびdump機能付き
+## 温度変化
 
-Environment
+本研究では、温度関数・初期温度・最終温度を変化させた実験を行う。
 
-Python 3.x
+---
+## 設定方法
 
-PyTorch
+config\config.py : 温度関数・初期温度・最終温度・シード値などを設定可能
+util\Temp_schdule.py : 温度関数の例はこれを参照
 
-CUDA対応GPU推奨
+---
 
-Usage:
-python -m main.run_all
-Notes
+## 主な特徴
 
-本リポジトリは研究目的で作成された実験コードである。
+- Multi-Head Attention内のSoftmaxに温度パラメータを導入
+- 学習時に温度変更可能
+- Attention重みの保存（dump）機能
+
+---
+
+## 実行環境
+
+- Python 3.x
+- PyTorch
+- CUDA対応GPU（推奨）
+
+---
+
+## 実行方法
+
+```bash
+python -m main.run_all # 全処理
+python -m main.attention_analysis # 正規化エントロピー可視化のみ
