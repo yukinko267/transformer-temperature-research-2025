@@ -22,6 +22,7 @@ project_root/
 │   └── config.py          # メイン設定ファイル（パラメータ指定）
 └── util/
     └── Temp_schedule.py   # 温度関数の例
+```
 
 ## 保存ディレクトリ
 - saved_tokenizer_data : トークナイズ化されたモデル(.model)
