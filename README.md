@@ -1,20 +1,28 @@
 # Temperature-Scaled Attention Transformer
 
 ## 概要
+本研究は，機械翻訳タスクにおいてTransformerの性能とAttention機構の挙動を分析することを目的とした実装研究である．特に，TransformerのAttention機構におけるSoftmax関数に温度パラメータ(temperature)を導入し，学習過程で温度を徐々に低下させる冷却スケジュール(cooling schdule)を適用する．  
+これにより，Attention分布の集中度の変化の仕方や翻訳性能への影響を分析する．
 
-本研究は、TransformerにおけるAttention機構のSoftmaxに温度パラメータ（Temperature）を導入し学習時に冷却することで、
-Attention分布の変化とモデル性能への影響を分析する研究実装です。
+## 手法
+Softmax温度を制御することで，Attentionの集中度を調節する．  
+温度が高い場合，Attention分布は広く分散し，温度が低い場合，Attention分布は特定のトークンに集中する．
+<img width="989" height="396" alt="温度に対する分布" src="https://github.com/user-attachments/assets/62247629-9daa-4726-9be6-e19de6a0711f" />
 
-Softmaxの温度を制御することで、Attentionの集中度（鋭さ）を調整可能にし、
-その挙動をヘッドごとの正規化エントロピーで可視化・定量評価します。
+また，Attention の挙動を定量的に評価するため，各層・各ヘッドにおけるAttention 分布の正規化エントロピーを計算する．
+
+これにより，Attention がどの程度集中しているか／分散しているかをヘッド単位で可視化・分析する．
+
+## データセット
+学習データおよび評価データのロードにはHuggingFace Datasets を使用する．
 
 ## 温度変化
 
-本研究では、温度関数・初期温度・最終温度を変化させた実験を行います。
+本研究では，温度関数・初期温度・最終温度を変化させた実験を行う．
 
 ## 🛠 設定方法
 
-プロジェクトの設定は以下のディレクトリ構造に沿って管理されています。
+プロジェクトの設定は以下のディレクトリ構造に沿って管理されている．
 
 ```text
 project_root/
